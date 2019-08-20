@@ -7,8 +7,8 @@ namespace Webserver
         private static Dictionary<string, string> _webApps = new Dictionary<string, string>();
         public WebAppList()
         {
-            _webApps.Add("google.com", "C:/WebPages/google/");
-            _webApps.Add("stackoverflow.com", "C:/WebPages/stackoverflow/");
+            _webApps.Add("google.com", "C:/WebPages/google");
+            _webApps.Add("stackoverflow.com", "C:/WebPages/stackoverflow");
         }
         public string GetRootDirectory(string webBaseUrl)
         {

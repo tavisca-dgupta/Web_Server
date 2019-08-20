@@ -7,7 +7,7 @@
         {
             string[] body = requestBody.Split(',');
             string[] data = new string[2];
-            int leapYear = 0;
+            int year = 0;
             for (int i = 0; i < body.Length; i++)
             {
                 if (body[i].Contains("year"))
@@ -17,13 +17,13 @@
                 }
             }
             string[] tempArray = data[1].Split('}');
-            int.TryParse(tempArray[0], out leapYear);
-            if (leapYear % 100 == 0)
+            int.TryParse(tempArray[0], out year);
+            if (year % 100 == 0)
             {
-                if (leapYear % 400 == 0)
+                if (year % 400 == 0)
                     return true;
             }
-            else if (leapYear % 4 == 0)
+            else if (year % 4 == 0)
             {
                 return true;
             }

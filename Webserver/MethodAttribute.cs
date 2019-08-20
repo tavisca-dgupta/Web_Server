@@ -5,13 +5,14 @@ namespace Webserver
     [AttributeUsage(AttributeTargets.Method)]
     public class MethodAttribute : Attribute
     {
-        public MethodAttribute(string Type, string Method)
+        public string type { get; set; }
+        public string method { get; set; }
+        public MethodAttribute(string type, string method)
         {
-            this.Type = Type;
-            this.Method = Method;
+            this.type = type;
+            this.method = method;
         }
 
-        public string Type { get; set; }
-        public string Method { get; set; }
+      
     }
 }

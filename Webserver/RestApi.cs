@@ -14,10 +14,14 @@ namespace Webserver
             string data = request.Split('{')[1];
             MethodDetail _methodDetails = new MethodDetail();
             string methodName = _methodDetails.GetMethod("POST", name);
-            var output = routeOperations.GetType().GetMethod(methodName).Invoke(routeOperations, new object[] { data });
+
+            if (methodName.Equals("No Such Method found"))
+                Error.PageNotFoundError(senderSocket);
+
+            var result = routeOperations.GetType().GetMethod(methodName).Invoke(routeOperations, new object[] { data });
             List<byte> response = new List<byte>();
             response.AddRange(Encoding.ASCII.GetBytes(GetHttpHeader().ToString()));
-            response.AddRange(Encoding.ASCII.GetBytes(output.ToString()));
+            response.AddRange(Encoding.ASCII.GetBytes(result.ToString()));
             byte[] responseByte = response.ToArray();
             senderSocket.Send(responseByte);
         }

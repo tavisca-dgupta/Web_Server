@@ -6,16 +6,16 @@
         {
             foreach (var prop in typeof(RouteOperations).GetMethods())
             {
-                var attrs = (MethodAttribute[])prop.GetCustomAttributes
+                var attributes = (MethodAttribute[])prop.GetCustomAttributes
                     (typeof(MethodAttribute), false);
-                foreach (var attr in attrs)
+                foreach (var attr in attributes)
                 {
 
-                    if (attr.Type == httptype && method == attr.Method)
+                    if (attr.type == httptype && method == attr.method)
                         return prop.Name;
                 }
             }
-            return "No Such Method";
+            return "No Such Method found";
         }
     }
 }
